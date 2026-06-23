@@ -933,7 +933,7 @@
 
     <h1>GOLES<span>POR EL MUNDO</span></h1>
     <p class="hero-subtitle">
-      “Un recorrido social y geográfico. El Mundial como territorio de encuentro”. Un proyecto interdisciplinario de 7° Grado de la Escuela N° 4704 “Normal” de Cafayate, Salta, que integra Ciencias Sociales, Formación Ética, Ciencias Naturales, Educación Tecnológica, Educación Física e Inglés a partir del Mundial 2026.
+      “Un recorrido social y geográfico. El Mundial como territorio de encuentro”. Un proyecto interdisciplinario de 7° Grado de la Escuela N° 4704 “Normal” de Cafayate, Salta, que integra Ciencias Sociales, Formación Ética, Ciencias Naturales, Educación Tecnológica, Educación Física, Inglés y Docencia de Apoyo a la Inclusión a partir del Mundial 2026.
     </p>
     <a href="#proyecto" class="hero-cta">Conocé el Proyecto</a>
   </div>
@@ -1005,6 +1005,7 @@
       <div class="materia-item"><span class="icon">⚙️</span> Ed. Tecnológica</div>
       <div class="materia-item"><span class="icon">🏃</span> Ed. Física</div>
       <div class="materia-item"><span class="icon">🇬🇧</span> Inglés</div>
+      <div class="materia-item"><span class="icon">🙌</span> Apoyo a la Inclusión</div>
     </div>
 
     <div class="proyecto-grid" id="paises">
@@ -1119,47 +1120,16 @@
     <h2 class="section-title">Actividades</h2>
     <div class="divider"></div>
 
-    <div class="actividades-grid">
-      <div class="act-card">
-        <div class="act-icon">🗺️</div>
-        <h3>Cartografía del Mundial</h3>
-        <p>Localizamos sedes con latitud, longitud y husos horarios. Comparamos relieves y climas de EE. UU., México y Canadá con la provincia de Salta usando Google Earth y planisferios.</p>
+    <a href="./actividades.html">
+      <div class="actividades-grid">
+        <div class="act-card">
+          <div class="act-icon">🗺️</div>
+          <h3>Fotos </h3>
+          <p>Te invitamos a ver algunas de las actividades realizadas hasta ahora.</p>
+        </div>
       </div>
-      <div class="act-card">
-        <div class="act-icon">🛂</div>
-        <h3>Pasaporte a Diferentes Culturas</h3>
-        <p>Investigamos identidad, pueblos originarios, símbolos, comidas y danzas típicas de los países participantes para armar nuestros pasaportes interculturales.</p>
-      </div>
-      <div class="act-card">
-        <div class="act-icon">⚖️</div>
-        <h3>Fair Play y Ciudadanía</h3>
-        <p>Comparamos el reglamento FIFA con la Constitución Nacional. Debatimos sobre racismo, xenofobia y “Say No to Racism”. Aplicamos el “VAR de la Convivencia” en el aula.</p>
-      </div>
-      <div class="act-card">
-        <div class="act-icon">🌱</div>
-        <h3>Mundial Sustentable</h3>
-        <p>Simulamos ser el comité organizador de un Mundial que contamine lo menos posible: analizamos energía, materiales, separación de mezclas y los tres tipos de contaminación (aire, agua, suelo).</p>
-      </div>
-      <div class="act-card">
-        <div class="act-icon">📡</div>
-        <h3>Tecnología del Mundial</h3>
-        <p>Analizamos estadios, indumentaria, VAR y transmisión como sistemas tecnológicos con flujos de materia, energía e información, y el paso del control manual a la automatización.</p>
-      </div>
-      <div class="act-card">
-        <div class="act-icon">🎙️</div>
-        <h3>Football Stars & Media Show</h3>
-        <p>En inglés: “Meet the Players”, conferencias de prensa simuladas, relatos de partidos, noticias deportivas y diseño del “World Cup Poster 2026”.</p>
-      </div>
-      <div class="act-card">
-        <div class="act-icon">⚽</div>
-        <h3>Sueños de Campeones</h3>
-        <p>Campeonato interno de fútbol 5 entre 7° A · B · C · D (mixto), donde cada curso representa a un país. Trabajamos pase, recepción, drible y, sobre todo, juego limpio.</p>
-      </div>
-      <div class="act-card">
-        <div class="act-icon">🕊️</div>
-        <h3>Asamblea de Naciones</h3>
-        <p>Simulamos una asamblea de los países del Mundial para debatir soberanía, alianzas internacionales y el conflicto EE. UU. – Irán a partir del rol de la ONU y la FIFA.</p>
-      </div>
+    </a>
+      
     </div>
   </div>
 </section>
@@ -1294,7 +1264,9 @@
           <label>Mensaje</label>
           <textarea placeholder="Escribí tu mensaje aquí..." id="mensaje"></textarea>
         </div>
-        <button class="btn-enviar" onclick="enviarMensaje()">⚽ Enviar Mensaje</button>
+        <button type="button" class="btn-enviar" onclick="enviarMensajeWhatsApp()">
+            ⚽ Enviar Mensaje
+        </button>
         <div class="success-msg" id="successMsg">
           ✅ ¡Mensaje recibido! Te responderemos pronto. ¡Gracias!
         </div>
@@ -1429,6 +1401,49 @@
     el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
     observer.observe(el);
   });
+
+
+function enviarMensajeWhatsApp() {
+
+    const nombre = document.getElementById("nombre").value.trim();
+    const apellido = document.getElementById("apellido").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const asunto = document.getElementById("asunto").value;
+    const mensaje = document.getElementById("mensaje").value.trim();
+
+    if (!nombre || !apellido || !email || !asunto || !mensaje) {
+        alert("Por favor completá todos los campos.");
+        return;
+    }
+
+    const texto =
+`⚽ *Nuevo mensaje desde la web*
+
+👤 *Nombre:* ${nombre}
+👤 *Apellido:* ${apellido}
+📧 *Email:* ${email}
+📌 *Asunto:* ${asunto}
+
+💬 *Mensaje:*
+${mensaje}`;
+
+    // Número de WhatsApp (Argentina)
+    const telefono = "543876411619";
+
+    const url = `https://wa.me/${telefono}?text=${encodeURIComponent(texto)}`;
+
+    window.open(url, "_blank");
+
+    document.getElementById("successMsg").style.display = "block";
+}
+
+document.getElementById("nombre").value = "";
+document.getElementById("apellido").value = "";
+document.getElementById("email").value = "";
+document.getElementById("asunto").selectedIndex = 0;
+document.getElementById("mensaje").value = "";
+
+
 </script>
 </body>
 </html>
